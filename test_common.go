@@ -16,7 +16,7 @@ const privateKeyFile = "./test_keys/test_key.priv"
 const publicKeyFile = "./test_keys/test_key.pub"
 
 func loadTestKeys() (*rsa.PrivateKey, *rsa.PublicKey) {
-	privKey, _ := LoadPrivateKey(privateKeyFile, "")
-	pubKey, _ := LoadPublicKey(publicKeyFile)
+	privKey, _ := LoadPrivateKeyFromFile(privateKeyFile, "")
+	pubKey, _ := LoadPublicKeyFromFile(publicKeyFile)
 	return privKey, pubKey
 }

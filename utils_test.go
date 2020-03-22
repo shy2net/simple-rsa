@@ -7,7 +7,7 @@ import (
 )
 
 func TestLoadPrivateKey(t *testing.T) {
-	key, err := LoadPrivateKey("./test_keys/test_key.priv", "")
+	key, err := LoadPrivateKeyFromFile("./test_keys/test_key.priv", "")
 
 	if !assert.Nil(t, err) {
 		return
@@ -17,7 +17,7 @@ func TestLoadPrivateKey(t *testing.T) {
 }
 
 func TestLoadPublicKey(t *testing.T) {
-	key, err := LoadPublicKey("./test_keys/test_key.pub")
+	key, err := LoadPublicKeyFromFile("./test_keys/test_key.pub")
 
 	if !assert.Nil(t, err) {
 		return

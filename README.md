@@ -49,7 +49,7 @@ import (
 
 func main() {
     // Load the private key
-    privKey, _ := simplersa.LoadPrivateKey("keys/my_key.priv")
+    privKey, _ := simplersa.LoadPrivateKeyFile("keys/my_key.priv")
 
     // Sign the file, bundle it with the stamp
     signed, _ := simplersa.SignAndBundleFile("./file_to_sign.txt", privateKey)
@@ -58,7 +58,7 @@ func main() {
     ioutil.WriteFile("signed.bundle.tar", )
 
     // Load the public key
-    pubKey, _ := simplersa.LoadPublicKey("keys/my_key.pub")
+    pubKey, _ := simplersa.LoadPublicKeyFile("keys/my_key.pub")
 
     // Verifies if this bundle was signed, and extract the file we have signed
     verifiedFileBytes, err := VerifyAndUnbundle(bundle, publicKey)
@@ -91,7 +91,7 @@ import (
 
 func main() {
     // Load the private key
-    privKey, _ := simplersa.LoadPrivateKey("keys/my_key.priv")
+    privKey, _ := simplersa.LoadPrivateKeyFile("keys/my_key.priv")
 
     // Sign the specified file, this would return the file with it's signed bytes
     signed, _ := simplersa.SignFile("file.txt", privKey))
@@ -100,7 +100,7 @@ func main() {
     ioutil.WriteFile("file.signed", )
 
     // Load the public key
-    pubKey, _ := simplersa.LoadPublicKey("keys/my_key.pub")
+    pubKey, _ := simplersa.LoadPublicKeyFile("keys/my_key.pub")
 
     // Verify if the provided file plaintext file was signed by comparing it using the 'file.signed' we have generated
     simplersa.VerifyFile("file_to_validate.txt", "file.signed", pubKey)
@@ -124,7 +124,7 @@ import (
 
 func main() {
     // Load the public key
-    pubKey, _ := simplersa.LoadPublicKey("keys/my_key.pub")
+    pubKey, _ := simplersa.LoadPublicKeyFile("keys/my_key.pub")
 
     // Encrypt the file and get the encrypted bytes
     encrypted, _ := simplersa.EncryptFile("file_to_encrypt.txt", pubKey)
@@ -133,7 +133,7 @@ func main() {
     ioutil.WriteFile("file.encrypted.txt", encrypted)
 
     // Load the private key
-    privKey, _ := simplersa.LoadPrivateKey("keys/my_key.priv")
+    privKey, _ := simplersa.LoadPrivateKeyFile("keys/my_key.priv")
 
     // Decrypt the file using the private key
     decrypted, _ := simplersa.DecryptFile("file.txt", privKey))
